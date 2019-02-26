@@ -1,0 +1,54 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Design your Precision 100 Project!</h1>
+    <p>You can start with an empty project or as is more commonly done use one of the popular templates as a starting point.</p>
+    <p><a class="btn btn-primary btn-lg" href="/project" role="button">Start here &raquo;</a></p>
+  </div>
+</div>
+
+<div class="container">
+  {{#each repos}}
+    <div class="row">
+      {{#if this.first}}
+        <div class="col-md-4">
+          <h2>{{this.first.name}}</h2>
+          <p>{{this.first.description}}</p>
+          <p>
+            <span class="badge badge-primary">Dataflows: {{this.first.dataflowCount}}</span>
+            <span class="badge badge-secondary">Pipelines: {{this.first.pipelineCount}}</span>
+            <span class="badge badge-success">Containers: {{this.first.containerCount}}</span>
+            <span class="badge badge-info">Files: {{this.first.fileCount}}</span>
+          </p>
+          <p><a class="btn btn-secondary" href="/manageProject" role="button">Manage &raquo;</a></p>
+        </div>
+      {{/if}}
+      {{#if this.second}}
+        <div class="col-md-4">
+          <h2>{{this.second.name}}</h2>
+          <p>{{this.second.description}}</p>
+          <p>
+            <span class="badge badge-primary">Dataflows: {{this.second.dataflowCount}}</span>
+            <span class="badge badge-secondary">Pipelines: {{this.second.pipelineCount}}</span>
+            <span class="badge badge-success">Containers: {{this.second.containerCount}}</span>
+            <span class="badge badge-info">Files: {{this.second.fileCount}}</span>
+          </p>
+          <p><a class="btn btn-secondary" href="#" role="button">Manage &raquo;</a></p>
+        </div>
+      {{/if}}
+      {{#if this.third}}
+        <div class="col-md-4">
+          <h2>{{this.third.name}}</h2>
+          <p>{{this.third.description}}</p>
+          <p>
+            <span class="badge badge-primary">Dataflows: {{this.third.dataflowCount}}</span>
+            <span class="badge badge-secondary">Pipelines: {{this.third.pipelineCount}}</span>
+            <span class="badge badge-success">Containers: {{this.third.containerCount}}</span>
+            <span class="badge badge-info">Files: {{this.third.fileCount}}</span>
+          </p>
+          <p><a class="btn btn-secondary" href="#" role="button">Manage &raquo;</a></p>
+        </div>
+      {{/if}}
+    </div>
+  {{/each}}
+</div>

@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-6">
+      {{#if saveSuccess}}
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Repository Created</h4>
+          <p>Repository has been created.</p>
+        </div>
+      {{/if}}
+      {{#if saveFailure}}
+        <div class="alert alert-error" role="alert">
+          <h4 class="alert-heading">Unable to save Repository</h4>
+          <p>There was an error when trying to save the repository. Contact the administrator for assistance.</p>
+        </div>
+      {{/if}}
+      <h2>Repositories</h2>
+      <form action="/settings" method="POST" role="form">
+        <div class="form-group">
+          <label for="repositoryName">Repository name</label>
+          <input type="text" class="form-control" id="repositoryName" name="repositoryName" aria-describedby="repositoryHelp" placeholder="e.g. precision-100-migration-templates">
+          <small id="repositoryHelp" class="form-text text-muted">The repository name should not have any spaces, use hyphen or underscore to replace places in the name</small>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="url">Repository URL</label>
+          <input type="text" class="form-control" id="url" name="url" aria-describedby="urlHelp" placeholder="https://github.com/ennovatenow/precision-100-migration-templates">
+        </div>
+        <button type="submit" class="btn btn-primary">Save the Repository!!</button>
+      </form>
+    </div>
+    <div class="col">
+      {{#each repos}}
+      <div class="row mt-2">
+        {{#if this.first}}
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{this.first.name}}</h5>
+              <p class="card-text">{{this.first.description}}</p>
+              <hr>
+              <a href="{{this.first.url}}" class="btn btn-primary">Repository URL &raquo;</a>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+        {{#if this.second}}
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{this.second.name}}</h5>
+              <p class="card-text">{{this.second.description}}</p>
+              <hr>
+              <a href="{{this.second.url}}" class="btn btn-primary">Repository URL &raquo;</a>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

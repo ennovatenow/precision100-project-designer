@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+    </div>
+    <div class="col-6">
+      {{#if saveSuccess}}
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Well done!</h4>
+          <p>The project has been created. You can now add dataflows to the project.</p>
+        </div>
+      {{/if}}
+      {{#if saveFailure}}
+      <div class="alert alert-error" role="alert">
+        <h4 class="alert-heading">Oops!</h4>
+        <p>Faced an unexepected error while saving the project. Contact administrator for assistance.</p>
+      </div>
+      {{/if}}
+      <h2>Start a new Project</h2>
+      <form action="/project" method="POST" role="form">
+        <div class="form-group">
+          <label for="projectName">Project name</label>
+          <input type="text" class="form-control" id="projectName" name="projectName" aria-describedby="projectHelp" placeholder="e.g. eq3-finacle-migration" required>
+          <small id="projectHelp" class="form-text text-muted">The project name should not have any spaces, use hyphen or underscore to replace places in the project name</small>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="templateName">Template</label>
+          <select id="templateName" name="templateName" class="form-control">
+            <option value="none">None</option>
+            {{#templates}}
+            <option value="{{name}},{{name}}">{{name}}</option>
+            {{/templates}}
+          </select>
+          <small id="tempHelp" class="form-text text-muted">You an use 'None' to start a blank project, however it is a lot more productive to use one of the existing templates.</small>
+        </div>
+        <div class="form-group">
+          <label for="repositoryName">Repository</label>
+          <select id="repositoryName" name="repositoryName">
+           {{#repos}}
+           <option>{{name}}</option>
+           {{/repos}}
+         </select>
+        </div>
+        <div class="form-group form-check">
+          <input class="form-check-input" type="checkbox" value="true" id="publish" name="publish">
+          <label class="form-check-label" for="publish">
+          Publish
+        </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Save the Project!!</button>
+      </form>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>

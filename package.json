@@ -1,0 +1,26 @@
+{
+  "name": "precision100-designer",
+  "version": "1.0.0",
+  "description": "Designer to build projects for the precision100 framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "precision100"
+  ],
+  "author": "anisht",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.1",
+    "handlebars": "^4.1.0",
+    "nedb": "^1.8.0",
+    "properties-reader": "0.0.16"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
+}
