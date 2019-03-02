@@ -279,9 +279,22 @@ router.post("/container", function(req, res, next) {
 });
 
 router.get("/manage", function(req, res, next) {
-  res.render("manage", {
+  var repositoryName = req.query.repositoryName;
+  var projectName = req.query.projectName;
+  var respVars = {
     layout: "default",
-    title: "Manage Projects"
+    title: "Manage Projects",
+    repos: null,
+    saveSuccess: false,
+    saveFailure: false
+  };
+  projectDao.findByName(repositoryName, projectName, (err, docs) => {
+    if (err == null) {
+      respVars = Object.assign(respVars, {
+        "repo": docs[0]
+      });
+    }
+    res.render("manage", respVars);
   });
 });
 

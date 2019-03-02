@@ -13,6 +13,44 @@ const projectDb = new DataStore({
   timestampData: true
 });
 
+module.exports.findByName = (repositoryName, projectName, callback) => {
+  projectDb.find({
+    "name": projectName,
+    "repository.name": repositoryName
+  }, (err, docs) => {
+    if (err == null) {
+      var repos = [];
+      var dataflowList = [];
+      var pipelineList = [];
+      var containerList = [];
+      var fileList = [];
+      docs.forEach((doc) => {
+        doc.dataflows.forEach((d) => {
+          dataflowList.push(d);
+          d.pipelines.forEach((p) => {
+            pipelineList.push(p);
+            p.containers.forEach((c) => {
+              containerList.push(c);
+              c.files.forEach((f) => {
+                fileList.push(f);
+              });
+            });
+          });
+        });
+        var repo = Object.assign(doc, {
+          "dataflowList": dataflowList,
+          "pipelineList": pipelineList,
+          "containerList": containerList,
+          "fileList": fileList
+        });
+        repos.push(repo);
+      });
+      callback(err, repos);
+    } else {
+      callback(err, docs);
+    }
+  });
+};
 
 module.exports.saveNone = (projectName, description, repositoryName, publish, callback) => {
   debug("None template save" + JSON.stringify(callback));

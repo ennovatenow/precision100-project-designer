@@ -20,7 +20,7 @@
             <span class="badge badge-success">Containers: {{this.first.containerCount}}</span>
             <span class="badge badge-info">Files: {{this.first.fileCount}}</span>
           </p>
-          <p><a class="btn btn-secondary" href="/manageProject" role="button">Manage &raquo;</a></p>
+          <p><a class="btn btn-secondary" href="/manage?repositoryName={{this.first.repository.name}}&projectName={{this.first.name}}" role="button">Manage &raquo;</a></p>
         </div>
       {{/if}}
       {{#if this.second}}
@@ -33,7 +33,7 @@
             <span class="badge badge-success">Containers: {{this.second.containerCount}}</span>
             <span class="badge badge-info">Files: {{this.second.fileCount}}</span>
           </p>
-          <p><a class="btn btn-secondary" href="#" role="button">Manage &raquo;</a></p>
+          <p><a class="btn btn-secondary" href="/manage?repositoryName={{this.second.repository.name}}&projectName={{this.second.name}}" role="button">Manage &raquo;</a></p>
         </div>
       {{/if}}
       {{#if this.third}}
@@ -46,7 +46,7 @@
             <span class="badge badge-success">Containers: {{this.third.containerCount}}</span>
             <span class="badge badge-info">Files: {{this.third.fileCount}}</span>
           </p>
-          <p><a class="btn btn-secondary" href="#" role="button">Manage &raquo;</a></p>
+          <p><a class="btn btn-secondary" href="/manage?repositoryName={{this.third.repository.name}}&projectName={{this.third.name}}" role="button">Manage &raquo;</a></p>
         </div>
       {{/if}}
     </div>
